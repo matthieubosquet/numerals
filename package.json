@@ -1,5 +1,26 @@
 {
-    "scripts": {
-        "test": "jest"
-    }
+  "name": "numerals",
+  "version": "1.0.0",
+  "description": "Convert numerals",
+  "main": "numeral.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthieubosquet/numerals.git"
+  },
+  "keywords": [
+    "roman",
+    "numerals"
+  ],
+  "author": "Matthieu Bosquet",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/matthieubosquet/numerals/issues"
+  },
+  "homepage": "https://github.com/matthieubosquet/numerals#readme",
+  "devDependencies": {
+    "jest": "^26.1.0"
+  }
 }
