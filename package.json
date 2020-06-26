@@ -21,6 +21,11 @@
   },
   "homepage": "https://github.com/matthieubosquet/numerals#readme",
   "devDependencies": {
+    "codecov": "^3.7.0",
     "jest": "^26.1.0"
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   }
 }
