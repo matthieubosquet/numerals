@@ -15,16 +15,8 @@ const romanNumeralsTests = [
     }
 ];
 
-// n.b. this form doesn't show the nice little green check with vscode jest plugin
 romanNumeralsTests.forEach((item) => {
     test(`convertNumberToRomanNumeral(${item.value}) to return ${item.roman}`, () => {
         expect(convertNumberToRomanNumeral(item.value)).toBe(item.roman);
     });
-});
-
-// n.b. this form shows the nice little green check with vscode jest plugin
-test("convertNumberToRomanNumeral(-1) to return a message", () => {
-    expect(convertNumberToRomanNumeral(-1)).toBe(
-        "There are no negative roman numerals."
-    );
 });

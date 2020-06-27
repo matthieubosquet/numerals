@@ -1,4 +1,10 @@
-// See https://en.wikipedia.org/wiki/Roman_numerals
+/**
+ * Converts a number to its Roman numeral form.
+ * See https://en.wikipedia.org/wiki/Roman_numerals
+ *
+ * @param value {number}
+ * @returns {string}
+ */
 export function convertNumberToRomanNumeral(value: number) {
     const romanNumeralValues = {
         M: 1000,
@@ -25,6 +31,7 @@ export function convertNumberToRomanNumeral(value: number) {
     } else if (value > 3999) {
         return 'The largest number that can be represented in roman numeral "standard" form is 3,999.';
     } else {
+        // Construct roman numeral using the highest matching value (the actual logic behind writing them)
         for (i in romanNumeralValues) {
             while (value >= romanNumeralValues[i]) {
                 romanNumeral += i;
