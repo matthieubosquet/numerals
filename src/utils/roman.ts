@@ -1,11 +1,17 @@
+import { defaultLanguage, Language, message } from "../i18n/message";
+import { Key } from "../i18n/locale";
+
 /**
  * Converts a number to its Roman numeral form.
  * See https://en.wikipedia.org/wiki/Roman_numerals
  *
- * @param value {number}
+ * @param number {number}
  * @returns {string}
  */
-export function convertNumberToRomanNumeral(value: number) {
+export function convertNumberToRomanNumeral(
+    number: number,
+    i18n: Language = defaultLanguage
+): string {
     const romanNumeralValues = {
         M: 1000,
         CM: 900,
@@ -21,21 +27,21 @@ export function convertNumberToRomanNumeral(value: number) {
         IV: 4,
         I: 1
     };
-    let romanNumeral: string = "";
+    let romanNumeral = "";
     let i: string;
 
-    if (value < 0) {
-        return "There are no negative roman numerals.";
-    } else if (value === 0) {
+    if (number < 0) {
+        return message(Key.RomanLowerLimit, i18n);
+    } else if (number === 0) {
         return "N";
-    } else if (value > 3999) {
-        return 'The largest number that can be represented in roman numeral "standard" form is 3,999.';
+    } else if (number > 3999) {
+        return message(Key.RomanUpperLimit, i18n);
     } else {
         // Construct roman numeral using the highest matching value (the actual logic behind writing them)
         for (i in romanNumeralValues) {
-            while (value >= romanNumeralValues[i]) {
+            while (number >= romanNumeralValues[i]) {
                 romanNumeral += i;
-                value -= romanNumeralValues[i];
+                number -= romanNumeralValues[i];
             }
         }
         return romanNumeral;

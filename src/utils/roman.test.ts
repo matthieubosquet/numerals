@@ -1,22 +1,31 @@
 import { convertNumberToRomanNumeral } from "./roman";
+import { defaultLanguage, Language, message } from "../i18n/message";
+import { Key } from "../i18n/locale";
 
 const romanNumeralsTests = [
-    { value: -1, roman: "There are no negative roman numerals." },
-    { value: 0, roman: "N" },
-    { value: 5, roman: "V" },
-    { value: 160, roman: "CLX" },
-    { value: 789, roman: "DCCLXXXIX" },
-    { value: 1066, roman: "MLXVI" },
-    { value: 3999, roman: "MMMCMXCIX" },
+    { number: -1, roman: message(Key.RomanLowerLimit, defaultLanguage) },
+    { number: 0, roman: "N" },
+    { number: 5, roman: "V" },
+    { number: 160, roman: "CLX" },
+    { number: 789, roman: "DCCLXXXIX" },
+    { number: 1066, roman: "MLXVI" },
+    { number: 3999, roman: "MMMCMXCIX" },
+    { number: 4000, roman: message(Key.RomanUpperLimit, defaultLanguage) },
     {
-        value: 4000,
-        roman:
-            'The largest number that can be represented in roman numeral "standard" form is 3,999.'
-    }
+        number: 4000,
+        roman: message(Key.RomanUpperLimit, Language.French),
+        i18n: Language.French
+    },
+    { number: 4000, roman: message(Key.LocaleNotImplemented, -1), i18n: -1 }
 ];
 
-romanNumeralsTests.forEach((item) => {
-    test(`convertNumberToRomanNumeral(${item.value}) to return ${item.roman}`, () => {
-        expect(convertNumberToRomanNumeral(item.value)).toBe(item.roman);
+romanNumeralsTests.forEach((romanNumeralsTest) => {
+    test(`convertNumberToRomanNumeral(${romanNumeralsTest.number}) to return ${romanNumeralsTest.roman}`, () => {
+        expect(
+            convertNumberToRomanNumeral(
+                romanNumeralsTest.number,
+                romanNumeralsTest.i18n
+            )
+        ).toBe(romanNumeralsTest.roman);
     });
 });
