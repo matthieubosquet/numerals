@@ -1,6 +1,8 @@
 import { convertNumberToRomanNumeral } from "./utils/roman";
 import { defaultLanguage, Language, message } from "./i18n/message";
 import { Key } from "./i18n/locale";
+/* istanbul ignore file */
+export { Language } from "./i18n/message";
 
 // TODO extend to other numeral forms
 export enum NumeralForm {

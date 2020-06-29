@@ -1,4 +1,4 @@
-import { convertNumberToNumeralForm, NumeralForm } from "./index";
+import { convertNumberToNumeralForm, NumeralForm } from "./numerals";
 import { defaultLanguage, message } from "./i18n/message";
 import { Key } from "./i18n/locale";
 
