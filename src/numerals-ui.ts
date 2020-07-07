@@ -9,7 +9,7 @@ number.addEventListener("keyup", (event) => {
 });
 
 roman.addEventListener("click", async () => {
-    const numerals = await import("./numerals.js");
+    const numerals = await import("./numerals");
     const value = parseFloat(number.value);
     const romanNumeralForm = numerals.convertNumberToNumeralForm(
         value,

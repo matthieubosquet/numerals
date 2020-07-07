@@ -12,23 +12,23 @@ export function convertNumberToRomanNumeral(
     number: number,
     i18n: Language = defaultLanguage
 ): string {
-    const romanNumeralValues = {
-        M: 1000,
-        CM: 900,
-        D: 500,
-        CD: 400,
-        C: 100,
-        XC: 90,
-        L: 50,
-        XL: 40,
-        X: 10,
-        IX: 9,
-        V: 5,
-        IV: 4,
-        I: 1
-    };
+    enum RomanNumeralValues {
+        M = 1000,
+        CM = 900,
+        D = 500,
+        CD = 400,
+        C = 100,
+        XC = 90,
+        L = 50,
+        XL = 40,
+        X = 10,
+        IX = 9,
+        V = 5,
+        IV = 4,
+        I = 1
+    }
     let romanNumeral = "";
-    let i: string;
+    let i: keyof typeof RomanNumeralValues;
 
     if (number < 0) {
         return message(Key.RomanLowerLimit, i18n);
@@ -38,10 +38,13 @@ export function convertNumberToRomanNumeral(
         return message(Key.RomanUpperLimit, i18n);
     } else {
         // Construct roman numeral using the highest matching value (the actual logic behind writing them)
-        for (i in romanNumeralValues) {
-            while (number >= romanNumeralValues[i]) {
-                romanNumeral += i;
-                number -= romanNumeralValues[i];
+        for (i in RomanNumeralValues) {
+            // Iterating over Numeric enums returns values and keys (unlike String enums), so check it's a key
+            if (isNaN(Number(i))) {
+                while (number >= Number(RomanNumeralValues[i])) {
+                    romanNumeral += i;
+                    number -= Number(RomanNumeralValues[i]);
+                }
             }
         }
         return romanNumeral;
