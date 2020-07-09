@@ -1,20 +1,46 @@
-const number = <HTMLInputElement>document.querySelector("#number");
-const result = document.querySelector("#result");
-const roman = <HTMLInputElement>document.querySelector("#roman-numeral");
+const template = document.createElement("template");
+template.innerHTML = `
+    <label for="number">Number:</label>
+    <input type="number" id="number" name="number">
+    <button id="roman-numeral" for="number">Translate to Roman Numeral</button>
+    <span id="result"></span>
+`;
 
-number.addEventListener("keyup", (event) => {
-    if (event.keyCode === 13) {
-        roman.click();
+class NumeralsUI extends HTMLElement {
+    constructor() {
+        super();
+        // Define Shadow root and create node
+        const shadowRoot = this.attachShadow({ mode: "open" });
+        shadowRoot.appendChild(template.content.cloneNode(true));
+
+        const number: HTMLInputElement | null = <HTMLInputElement | null>(
+            shadowRoot.querySelector("#number")
+        );
+        const result: HTMLElement | null = shadowRoot.querySelector("#result");
+        const roman: HTMLInputElement | null = <HTMLInputElement | null>(
+            shadowRoot.querySelector("#roman-numeral")
+        );
+
+        if (number && roman) {
+            number.addEventListener("keyup", (event) => {
+                if (event.keyCode === 13) {
+                    roman.click();
+                }
+            });
+            if (result) {
+                roman.addEventListener("click", async () => {
+                    const numerals = await import("./numerals");
+                    const value = parseFloat(number.value);
+                    const romanNumeralForm = numerals.convertNumberToNumeralForm(
+                        value,
+                        numerals.NumeralForm.Roman,
+                        numerals.Language.English
+                    );
+                    result.innerHTML = `The roman numeral form of ${value} is: ${romanNumeralForm}`;
+                });
+            }
+        }
     }
-});
+}
 
-roman.addEventListener("click", async () => {
-    const numerals = await import("./numerals");
-    const value = parseFloat(number.value);
-    const romanNumeralForm = numerals.convertNumberToNumeralForm(
-        value,
-        numerals.NumeralForm.Roman,
-        numerals.Language.English
-    );
-    result.innerHTML = `Roman numeral form of ${value}: ${romanNumeralForm}`;
-});
+customElements.define("numerals-ui", NumeralsUI);
