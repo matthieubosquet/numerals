@@ -1,3 +1,5 @@
+import { convertNumberToNumeralForm, Language, NumeralForm } from "./numerals";
+
 const template = document.createElement("template");
 template.innerHTML = `
     <label for="number">Number:</label>
@@ -29,12 +31,11 @@ class NumeralsUI extends HTMLElement {
             });
             if (result) {
                 roman.addEventListener("click", async () => {
-                    const numerals = await import("./numerals");
                     const value = parseFloat(number.value);
-                    const romanNumeralForm = numerals.convertNumberToNumeralForm(
+                    const romanNumeralForm = convertNumberToNumeralForm(
                         value,
-                        numerals.NumeralForm.Roman,
-                        numerals.Language.English
+                        NumeralForm.Roman,
+                        Language.English
                     );
                     result.innerHTML = `The roman numeral form of ${value} is: ${romanNumeralForm}`;
                 });
