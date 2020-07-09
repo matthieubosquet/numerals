@@ -1,10 +1,11 @@
 import pkg from "./package.json";
+import html from "rollup-plugin-html";
 import typescript from "rollup-plugin-typescript2";
 
 export default [
   // Package
   {
-    input: './src/index.ts',
+    input: "./src/index.ts",
     output: [
       {
         file: pkg.main,
@@ -39,7 +40,7 @@ export default [
   },
   // UI
   {
-    input: './src/numerals-ui.ts',
+    input: "./src/numerals-ui.ts",
     output: [
       {
         dir: "./script/",
@@ -48,6 +49,15 @@ export default [
       }
     ],
     plugins: [
+      html({
+        include: "**/*.html",
+        htmlMinifierOptions: {
+            collapseWhitespace: true,
+            collapseBooleanAttributes: true,
+            conservativeCollapse: true,
+            minifyJS: true
+        }
+      }),
       typescript({
         tsconfigOverride: {
           compilerOptions: {

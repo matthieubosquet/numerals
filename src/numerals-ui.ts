@@ -1,12 +1,8 @@
 import { convertNumberToNumeralForm, Language, NumeralForm } from "./numerals";
+import templateString from "./numerals-ui.html";
 
 const template = document.createElement("template");
-template.innerHTML = `
-    <label for="number">Number:</label>
-    <input type="number" id="number" name="number">
-    <button id="roman-numeral" for="number">Translate to Roman Numeral</button>
-    <span id="result"></span>
-`;
+template.innerHTML = templateString;
 
 class NumeralsUI extends HTMLElement {
     constructor() {
