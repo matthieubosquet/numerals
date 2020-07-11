@@ -1,9 +1,13 @@
 {
   "name": "numerals",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Convert numbers to standard numeral forms.",
   "type": "commonjs",
   "typeHint": "Node.js supports .mjs for esm and .cjs for commonjs modules. Type defines parsing of .js files. If type is set to module, .js parses as esm, if type is set to commonjs, .js parses as .cjs. Defaults to commonjs.",
+  "files": [
+    "dist"
+  ],
+  "filesHint": "Describes the entries to be included when the package is installed as a dependency (package.json, README and a few others are included by default).",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "module": "./dist/index.mjs",
@@ -16,8 +20,9 @@
   "scripts": {
     "build": "rollup --config rollup.config.js",
     "format": "prettier --write \"{package.json,README.md,src/**/*.ts}\"",
-    "serve": "npx http-server -c0 -g",
     "lint": "eslint --ext .ts --fix ./src/.",
+    "prepublishOnly" : "npm install && npm run test && npm run build",
+    "serve": "npx http-server -c0 -g",
     "test": "jest \"src/.*\\.test\\.ts\""
   },
   "repository": {

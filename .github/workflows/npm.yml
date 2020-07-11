@@ -19,11 +19,8 @@ jobs:
       with:
         node-version: '12.x'
         registry-url: 'https://registry.npmjs.org'
-    # Run tests and publish if they pass
+    # Publish package (use package.json prepublishOnly hook for other things to run)
     - name: Publish
-      run: |
-        npm install
-        npm test
-        npm publish
+      run: npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
