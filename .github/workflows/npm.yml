@@ -2,7 +2,7 @@ name: Publish npm package
 
 on:
   release:
-    types: [created]
+    types: [ created ]
 
 jobs:
   build:
@@ -10,16 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # Make repository available to workflow
-    - name: Checkout repo
     - uses: actions/checkout@v2
     # Setup .npmrc file to publish to npm
-    - name: Node setup
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
         registry-url: 'https://registry.npmjs.org'
-    - name: NPM publish
     - run: npm install
     - run: npm publish
       env:
