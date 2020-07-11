@@ -1,6 +1,6 @@
 {
   "name": "numerals",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Convert numbers to standard numeral forms.",
   "type": "commonjs",
   "typeHint": "Node.js supports .mjs for esm and .cjs for commonjs modules. Type defines parsing of .js files. If type is set to module, .js parses as esm, if type is set to commonjs, .js parses as .cjs. Defaults to commonjs.",
