@@ -3,7 +3,9 @@
 
 # Numerals
 
-Convert numbers to their form in a numeral system, starting with the [roman numerals system](https://en.wikipedia.org/wiki/Roman_numerals).
+Convert numbers to their form in a numeral system.
+
+Currently only implements the [roman numerals system](https://en.wikipedia.org/wiki/Roman_numerals) converter.
 
 See also: [https://en.wikipedia.org/wiki/List_of_numeral_systems](https://en.wikipedia.org/wiki/List_of_numeral_systems)
 
