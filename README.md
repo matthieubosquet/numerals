@@ -22,7 +22,7 @@ npm i numerals
 - Use the package as an ECMAScript module
 
 ```javascript
-import { Language, NumeralForm, convertNumberToNumeralForm } from 'numerals';
+import { convertNumberToNumeralForm, Language, NumeralForm } from 'numerals';
 
 let x = convertNumberToNumeralForm(8, NumeralForm.Roman, Language.English);
 
@@ -33,7 +33,7 @@ console.log(x);
 - Use the package as a CommonJS module
 
 ```javascript
-const { NumeralForm, Language, convertNumberToNumeralForm } = require('numerals')
+const { convertNumberToNumeralForm, Language, NumeralForm } = require('numerals')
 
 let x = convertNumberToNumeralForm(8, NumeralForm.Roman, Language.English)
 
