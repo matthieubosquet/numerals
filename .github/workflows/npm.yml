@@ -1,5 +1,6 @@
 name: Publish npm package
 
+# This action triggers only on manual release through GitHub, not pushing tags
 on:
   release:
     types: [ created ]
