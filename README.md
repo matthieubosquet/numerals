@@ -19,7 +19,7 @@ See also: [https://en.wikipedia.org/wiki/List_of_numeral_systems](https://en.wik
 npm i numerals
 ```
 
-- Use the package
+- Use the package as an ECMAScript module
 
 ```javascript
 import { Language, NumeralForm, convertNumberToNumeralForm } from 'numerals';
@@ -28,6 +28,16 @@ let x = convertNumberToNumeralForm(8, NumeralForm.Roman, Language.English);
 
 // Outputs VIII
 console.log(x);
+```
+
+- Use the package as a CommonJS module
+
+```javascript
+const { NumeralForm, Language, convertNumberToNumeralForm } = require('numerals')
+
+let number = 8
+
+console.log("The numeral form of 8 is:", convertNumberToNumeralForm(number, NumeralForm.Roman, Language.English));
 ```
 
 - Get the web component
