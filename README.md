@@ -35,9 +35,10 @@ console.log(x);
 ```javascript
 const { NumeralForm, Language, convertNumberToNumeralForm } = require('numerals')
 
-let number = 8
+let x = convertNumberToNumeralForm(number, NumeralForm.Roman, Language.English)
 
-console.log("The numeral form of 8 is:", convertNumberToNumeralForm(number, NumeralForm.Roman, Language.English));
+// Outputs VIII
+console.log(x);
 ```
 
 - Get the web component
