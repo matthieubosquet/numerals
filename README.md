@@ -52,3 +52,14 @@ wget https://neig.es/numerals/script/numerals-ui.js
 </body>
 </html>
 ```
+
+<!--
+```
+<custom-element-demo>
+  <template>
+    <numerals-ui></numerals-ui>
+    <script src="./script/numerals-ui.js"></script>
+  </template>
+</custom-element-demo>
+```
+-->
