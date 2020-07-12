@@ -35,7 +35,7 @@ console.log(x);
 ```javascript
 const { NumeralForm, Language, convertNumberToNumeralForm } = require('numerals')
 
-let x = convertNumberToNumeralForm(number, NumeralForm.Roman, Language.English)
+let x = convertNumberToNumeralForm(8, NumeralForm.Roman, Language.English)
 
 // Outputs VIII
 console.log(x);
